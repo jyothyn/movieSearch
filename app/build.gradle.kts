@@ -35,6 +35,12 @@ android {
     buildFeatures {
         viewBinding = true
     }
+    lint {
+        baseline = file("lint-baseline.xml")
+    }
+    lintOptions {
+        disable("JvmStaticProvidesInObjectDetector","FieldSiteTargetOnQualifierAnnotation", "FieldSiteTargetOnQualifierAnnotation", "ModuleCompanionObjects", "ModuleCompanionObjectsNotInModuleParent")
+    }
 }
 
 dependencies {
