@@ -4,4 +4,9 @@
     <string name="title_search">Search Movies</string>
     <string name="title_playlist">Playlist</string>
     <string name="movie_search_hint">enter a title for search</string>
+    <string name="add_to_playlist">Add to playlist</string>
+    <string name="go_back">Back</string>
+    <string name="add_review">Add review</string>
+    <string name="image">Movie Image</string>
+    <string name="no_titles_found">No titles found</string>
 </resources>

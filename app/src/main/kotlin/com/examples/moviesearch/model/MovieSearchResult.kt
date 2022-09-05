@@ -1,11 +1,7 @@
 package com.examples.moviesearch.model
 
-data class MovieSearchResult(val moviesList: List<MovieType>?=null)
+import com.google.gson.annotations.SerializedName
 
-data class MovieType(
-    val title: String,
-    val year: String,
-    val id: String,
-    val type: String,
-    val poster: String
+data class MovieSearchResult(
+    @SerializedName("Search") val moviesList: List<MovieType>? = null
 )

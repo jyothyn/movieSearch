@@ -12,14 +12,27 @@
         tools:layout="@layout/fragment_home" />
 
     <fragment
-        android:id="@+id/navigation_search"
-        android:name="com.examples.moviesearch.ui.search.SearchFragment"
-        android:label="@string/title_search"
-        tools:layout="@layout/fragment_search" />
-
-    <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.examples.moviesearch.ui.notifications.NotificationsFragment"
         android:label="@string/title_playlist"
         tools:layout="@layout/fragment_notifications" />
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.examples.moviesearch.ui.search.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="selectedMovie"
+            app:argType="com.examples.moviesearch.model.MovieType"
+            app:nullable="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_search"
+        android:name="com.examples.moviesearch.ui.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search">
+        <action
+            android:id="@+id/action_navigation_search_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 </navigation>

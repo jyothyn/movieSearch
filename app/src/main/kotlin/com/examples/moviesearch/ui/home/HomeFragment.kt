@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import com.examples.moviesearch.databinding.FragmentHomeBinding
 import com.examples.moviesearch.viewmodel.MainViewModel
 
+//@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -28,8 +30,18 @@ class HomeFragment : Fragment() {
         val root: View = binding.root
 
         val textView: TextView = binding.textHome
-        viewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+
+//        lifecycleScope.launchWhenResumed {
+//            viewModel.greetingMsg.onEach {
+//                println("===set onEach")
+//                textView.text = it
+//            }.launchIn(this)
+//        }
+        lifecycleScope.launchWhenResumed {
+            viewModel.greetingMsg.collect {
+                textView.text = it
+//                return@collect
+            }
         }
         return root
     }

@@ -1,10 +1,15 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
+    id("dagger.hilt.android.plugin")
+    // to use ... by navArgs()
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
     compileSdk = 32
+    buildToolsVersion = "33.0.0"
 
     defaultConfig {
         applicationId = "com.examples.moviesearch"
@@ -38,9 +43,9 @@ android {
     lint {
         baseline = file("lint-baseline.xml")
     }
-    lintOptions {
-        disable("JvmStaticProvidesInObjectDetector","FieldSiteTargetOnQualifierAnnotation", "FieldSiteTargetOnQualifierAnnotation", "ModuleCompanionObjects", "ModuleCompanionObjectsNotInModuleParent")
-    }
+//    lintOptions {
+//        disable("JvmStaticProvidesInObjectDetector","FieldSiteTargetOnQualifierAnnotation", "FieldSiteTargetOnQualifierAnnotation", "ModuleCompanionObjects", "ModuleCompanionObjectsNotInModuleParent")
+//    }
 }
 
 dependencies {
@@ -56,4 +61,26 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.3")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+
+    // Hilt dependencies
+    val hiltVersion = "2.42"
+    implementation("com.google.dagger:hilt-android:$hiltVersion")
+    kapt("com.google.dagger:hilt-android-compiler:$hiltVersion")
+    // KotlinJsonAdapterFactory
+//    implementation 'com.squareup.moshi:moshi-kotlin:1.13.0'
+//    implementation "com.squareup.okhttp3:logging-interceptor:4.9.0"
+    // MoshiConverterFactory
+//    implementation("com.squareup.retrofit2:converter-moshi:2.9.0")
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    // com.google.gson.annotations.SerializedName
+    implementation("com.google.code.gson:gson:2.9.0")
+    val glideVersion = "4.12.0"
+    implementation("com.github.bumptech.glide:glide:$glideVersion")
+//    annotationProcessor("com.github.bumptech.glide:compiler:$glide_version")
+}
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
 }
