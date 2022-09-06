@@ -51,13 +51,4 @@ object NetworkModule {
             .build()
     }
 
-    @Singleton
-    @Provides
-    fun provideSearchService(retrofit: Retrofit): ApiService =
-        retrofit.create(ApiService::class.java)
-
-    @Singleton
-    @Provides
-    fun provideRepositoryImpl(apiService: ApiService): SearchRepository =
-        SearchRepositoryImpl(apiService)
 }
