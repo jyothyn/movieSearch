@@ -1,4 +1,4 @@
-package com.examples.moviesearch.ui.search
+package com.examples.moviesearch.presentation.ui.search
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,12 +6,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.examples.moviesearch.R
-import com.examples.moviesearch.model.MovieType
+import com.examples.moviesearch.domain.entity.Movie
 
-typealias MovieItemClickListener = (MovieType) -> Unit
+typealias MovieItemClickListener = (Movie) -> Unit
 
 class MovieItemRecyclerViewAdapter(
-    private val movies: List<MovieType>,
+    private val movies: List<Movie>,
     private val listener: MovieItemClickListener
 ) : RecyclerView.Adapter<MovieItemRecyclerViewAdapter.ViewHolder>() {
 
@@ -32,9 +32,9 @@ class MovieItemRecyclerViewAdapter(
         private val idView: TextView = view.findViewById(R.id.movie_item_number)
         private val contentView: TextView = view.findViewById(R.id.movie_content)
 
-        fun bindVals(item: MovieType) {
+        fun bindVals(item: Movie) {
             idView.text = item.title
-            contentView.text = item.toString()
+            contentView.text = item.asDisplayText()
             itemView.setOnClickListener {
                 listener(item)
             }

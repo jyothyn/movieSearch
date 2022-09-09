@@ -1,6 +1,6 @@
-package com.examples.moviesearch.network
+package com.examples.moviesearch.data.network
 
-import com.examples.moviesearch.model.MovieSearchResult
+import com.examples.moviesearch.data.model.MovieSearchResult
 import retrofit2.http.GET
 import retrofit2.http.Query
 

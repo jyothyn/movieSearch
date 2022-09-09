@@ -1,4 +1,4 @@
-package com.examples.moviesearch.ui.home
+package com.examples.moviesearch.presentation.ui.home
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import com.examples.moviesearch.databinding.FragmentHomeBinding
-import com.examples.moviesearch.viewmodel.MainViewModel
+import com.examples.moviesearch.presentation.viewmodel.MainViewModel
 
 //@AndroidEntryPoint
 class HomeFragment : Fragment() {

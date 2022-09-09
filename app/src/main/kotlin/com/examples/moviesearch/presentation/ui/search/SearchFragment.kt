@@ -1,4 +1,4 @@
-package com.examples.moviesearch.ui.search
+package com.examples.moviesearch.presentation.ui.search
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.examples.moviesearch.R
 import com.examples.moviesearch.databinding.FragmentSearchBinding
-import com.examples.moviesearch.model.MovieType
-import com.examples.moviesearch.viewmodel.MainViewModel
+import com.examples.moviesearch.domain.entity.Movie
+import com.examples.moviesearch.presentation.viewmodel.MainViewModel
 import kotlinx.coroutines.launch
 
 //@AndroidEntryPoint
@@ -59,7 +59,7 @@ class SearchFragment : Fragment() {
         return root
     }
 
-    private fun openMovie(movie: MovieType) {
+    private fun openMovie(movie: Movie) {
 //        val direction = MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movie)
 //        Navigation.findNavController(view).navigate(direction)
         //OR

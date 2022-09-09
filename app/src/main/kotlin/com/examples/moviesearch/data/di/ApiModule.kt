@@ -1,5 +1,8 @@
-package com.examples.moviesearch.network
+package com.examples.moviesearch.data.di
 
+import com.examples.moviesearch.data.network.ApiService
+import com.examples.moviesearch.data.repository.SearchRepository
+import com.examples.moviesearch.data.repository.SearchRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

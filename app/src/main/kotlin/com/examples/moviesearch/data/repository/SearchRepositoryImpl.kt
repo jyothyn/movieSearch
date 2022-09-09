@@ -1,8 +1,7 @@
-package com.examples.moviesearch.network
+package com.examples.moviesearch.data.repository
 
-import com.examples.moviesearch.model.MovieSearchResult
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import com.examples.moviesearch.data.model.MovieSearchResult
+import com.examples.moviesearch.data.network.ApiService
 import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(private val apiService: ApiService) :
@@ -20,9 +19,13 @@ class SearchRepositoryImpl @Inject constructor(private val apiService: ApiServic
 //        }//.flowOn(Dispatchers.IO)
 //    }
 
-    override suspend fun submitQuery(query: String): Flow<MovieSearchResult> {
-        return flow {
-            apiService.submitQuery(query).also { emit(it) }
-        }
+//    override suspend fun submitQuery(query: String): Flow<MovieSearchResult> {
+//        return flow {
+//            apiService.submitQuery(query).also { emit(it) }
+//        }
+//    }
+
+    override suspend fun submitSearch(query: String): MovieSearchResult {
+        return apiService.submitQuery(query)
     }
 }

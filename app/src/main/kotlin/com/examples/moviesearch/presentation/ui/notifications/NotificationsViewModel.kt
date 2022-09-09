@@ -1,4 +1,4 @@
-package com.examples.moviesearch.ui.notifications
+package com.examples.moviesearch.presentation.ui.notifications
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

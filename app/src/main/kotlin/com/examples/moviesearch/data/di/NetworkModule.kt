@@ -1,4 +1,4 @@
-package com.examples.moviesearch.network
+package com.examples.moviesearch.data.di
 
 import dagger.Module
 import dagger.Provides
