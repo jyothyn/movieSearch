@@ -7,28 +7,28 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.examples.moviesearch.presentation.ui.home.HomeFragment"
+        android:name="com.cleanarch.moviesearch.presentation.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.examples.moviesearch.presentation.ui.notifications.NotificationsFragment"
+        android:name="com.cleanarch.moviesearch.presentation.ui.notifications.NotificationsFragment"
         android:label="@string/title_playlist"
         tools:layout="@layout/fragment_notifications" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.examples.moviesearch.presentation.ui.search.DetailFragment"
+        android:name="com.cleanarch.moviesearch.presentation.ui.search.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="selectedMovie"
-            app:argType="com.examples.moviesearch.domain.entity.Movie"
+            app:argType="com.cleanarch.moviesearch.domain.entity.Movie"
             app:nullable="true" />
     </fragment>
     <fragment
         android:id="@+id/navigation_search"
-        android:name="com.examples.moviesearch.presentation.ui.search.SearchFragment"
+        android:name="com.cleanarch.moviesearch.presentation.ui.search.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search">
         <action

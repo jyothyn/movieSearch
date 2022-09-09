@@ -12,7 +12,7 @@ android {
     buildToolsVersion = "33.0.0"
 
     defaultConfig {
-        applicationId = "com.examples.moviesearch"
+        applicationId = "com.cleanarch.moviesearch"
         minSdk = 28
         targetSdk = 32
         versionCode = 1
