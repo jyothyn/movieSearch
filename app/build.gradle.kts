@@ -79,6 +79,7 @@ dependencies {
     val glideVersion = "4.12.0"
     implementation("com.github.bumptech.glide:glide:$glideVersion")
 //    annotationProcessor("com.github.bumptech.glide:compiler:$glide_version")
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
 }
 // Allow references to generated code
 kapt {

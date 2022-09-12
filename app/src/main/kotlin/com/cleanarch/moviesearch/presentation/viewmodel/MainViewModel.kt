@@ -2,12 +2,14 @@ package com.cleanarch.moviesearch.presentation.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.cleanarch.moviesearch.data.ds.LaunchTimeDS
 import com.cleanarch.moviesearch.domain.State
 import com.cleanarch.moviesearch.domain.TitleUseCase
 import com.cleanarch.moviesearch.domain.entity.Movie
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import java.util.*
 import javax.inject.Inject
@@ -15,15 +17,23 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor(
 //    private val repository: SearchRepository,
-    private val titleUseCase: TitleUseCase
+    private val titleUseCase: TitleUseCase,
+//    private val playlistDs: PlaylistDs,
+    private val launchTimeDS: LaunchTimeDS
 ) : ViewModel() {
 
     private val _greetingMsg = MutableStateFlow("Hello User!")
     val greetingMsg: StateFlow<String>
         get() = _greetingMsg
 
+    private val _lastLaunchAt = MutableStateFlow("just now")
+    val lastLaunchAt: StateFlow<String>
+        get() = _lastLaunchAt
+
+
     init {
         _greetingMsg.value = getGreetingMessage()
+        updateLaunchTime()
     }
 
     private fun getGreetingMessage(): String {
@@ -33,6 +43,13 @@ class MainViewModel @Inject constructor(
             in 18..20 -> "Good Evening!"
             in 21..23 -> "Good Night!"
             else -> "Hello User"
+        }
+    }
+
+    private fun updateLaunchTime() {
+        viewModelScope.launch {
+            _lastLaunchAt.value = launchTimeDS.lastLaunchTime.first()
+            launchTimeDS.setLaunchTime()
         }
     }
 
@@ -77,7 +94,7 @@ class MainViewModel @Inject constructor(
                 when (it) {
                     is State.DataState -> {
                         _searchResult.value = it.data
-                        noResults.value = it.data.isEmpty() ?: true
+                        noResults.value = it.data.isEmpty()
                     }
                     else -> {
                         _searchResult.value = emptyList()

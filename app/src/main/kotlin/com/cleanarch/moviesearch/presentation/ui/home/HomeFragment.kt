@@ -43,6 +43,11 @@ class HomeFragment : Fragment() {
 //                return@collect
             }
         }
+        lifecycleScope.launchWhenResumed {
+            viewModel.lastLaunchAt.collect {
+                binding.lastLaunchTime.text = it
+            }
+        }
         return root
     }
 
