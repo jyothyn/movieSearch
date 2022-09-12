@@ -44,8 +44,8 @@ class HomeFragment : Fragment() {
             }
         }
         lifecycleScope.launchWhenResumed {
-            viewModel.lastLaunchAt.collect {
-                binding.lastLaunchTime.text = it
+            viewModel.lastLaunchAt.collect { time ->
+                "Last launched at $time".also { binding.lastLaunchTime.text = it }
             }
         }
         return root
